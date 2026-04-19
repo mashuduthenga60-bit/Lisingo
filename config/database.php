@@ -7,7 +7,10 @@ define('DB_NAME', 'lisingo_db');
 
 // Site Configuration
 define('SITE_NAME', 'Lisingo');
-define('SITE_URL', 'http://localhost:8000');
+// Auto-detect site URL for deployment flexibility
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
+define('SITE_URL', $protocol . '://' . $host);
 define('SITE_TAGLINE', 'Buy & Sell with Ease');
 
 // Create database connection
