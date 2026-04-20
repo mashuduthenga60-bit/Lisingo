@@ -1,0 +1,22 @@
+# Uploads
+uploads/products/*
+uploads/profiles/*
+!uploads/products/.gitkeep
+!uploads/profiles/.gitkeep
+
+# Environment
+.env
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# main.c (legacy file)
+main.c

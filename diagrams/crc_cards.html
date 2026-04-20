@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRC Cards - Lisingo C2C Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        .crc-card { border: 2px solid #333; border-radius: 8px; background: white; margin-bottom: 20px; overflow: hidden; }
+        .crc-header { background: #2563eb; color: white; padding: 10px 15px; font-weight: bold; font-size: 1.1rem; text-align: center; }
+        .crc-body { display: flex; min-height: 150px; }
+        .crc-responsibilities { flex: 1; padding: 12px; border-right: 2px solid #333; }
+        .crc-collaborators { flex: 1; padding: 12px; }
+        .crc-responsibilities h6, .crc-collaborators h6 { font-weight: bold; text-decoration: underline; margin-bottom: 8px; font-size: 0.85rem; }
+        .crc-responsibilities ul, .crc-collaborators ul { font-size: 0.82rem; padding-left: 18px; margin: 0; }
+        .crc-responsibilities li, .crc-collaborators li { margin-bottom: 4px; }
+        h1 { color: #2563eb; }
+    </style>
+</head>
+<body>
+<div class="container py-4">
+    <h1 class="text-center mb-2">Class Responsibility Collaborator (CRC) Cards</h1>
+    <p class="text-center text-muted mb-4">Lisingo C2C E-Commerce Platform</p>
+
+    <div class="row">
+        <!-- User -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">User</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Register and login</li>
+                            <li>Manage profile information</li>
+                            <li>List products for sale</li>
+                            <li>Browse and search products</li>
+                            <li>Add items to cart</li>
+                            <li>Place orders (buy)</li>
+                            <li>Send/receive messages</li>
+                            <li>Leave reviews for sellers</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>Product</li>
+                            <li>Order</li>
+                            <li>Cart</li>
+                            <li>Message</li>
+                            <li>Review</li>
+                            <li>Role</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">Product</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Store product details (title, description, price)</li>
+                            <li>Track product condition (new/used/refurbished)</li>
+                            <li>Manage product images (up to 4)</li>
+                            <li>Track stock quantity</li>
+                            <li>Track view count</li>
+                            <li>Manage product status (active/sold/pending/removed)</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>User (Seller)</li>
+                            <li>Category</li>
+                            <li>Order</li>
+                            <li>Cart</li>
+                            <li>Review</li>
+                            <li>Message</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">Order</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Record transaction between buyer and seller</li>
+                            <li>Store order quantity and total price</li>
+                            <li>Track order status (pending to delivered)</li>
+                            <li>Store shipping address</li>
+                            <li>Record payment method</li>
+                            <li>Update product stock on purchase</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>User (Buyer)</li>
+                            <li>User (Seller)</li>
+                            <li>Product</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">Category</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Classify products into groups</li>
+                            <li>Support parent-child hierarchy (subcategories)</li>
+                            <li>Store category name and description</li>
+                            <li>Provide filtering for product browsing</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>Product</li>
+                            <li>Category (self - parent)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">Cart</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Store items user intends to buy</li>
+                            <li>Track quantity per item</li>
+                            <li>Allow add, update, remove operations</li>
+                            <li>Calculate subtotals and totals</li>
+                            <li>Prevent duplicate entries</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>User</li>
+                            <li>Product</li>
+                            <li>Order (at checkout)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">Role</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Define user types (super_admin, admin, moderator, user)</li>
+                            <li>Control access to admin features (RBAC)</li>
+                            <li>Store granular permissions per role</li>
+                            <li>Enforce authorization checks</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>User</li>
+                            <li>Admin Panel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">Message</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Enable buyer-seller communication</li>
+                            <li>Store message content and timestamps</li>
+                            <li>Track read/unread status</li>
+                            <li>Link messages to specific products</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>User (Sender)</li>
+                            <li>User (Receiver)</li>
+                            <li>Product</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review -->
+        <div class="col-md-6">
+            <div class="crc-card">
+                <div class="crc-header">Review</div>
+                <div class="crc-body">
+                    <div class="crc-responsibilities">
+                        <h6>Responsibilities</h6>
+                        <ul>
+                            <li>Store seller ratings (1-5 stars)</li>
+                            <li>Store review comments</li>
+                            <li>Link reviews to specific products</li>
+                            <li>Calculate average seller ratings</li>
+                        </ul>
+                    </div>
+                    <div class="crc-collaborators">
+                        <h6>Collaborators</h6>
+                        <ul>
+                            <li>User (Reviewer)</li>
+                            <li>User (Reviewed Seller)</li>
+                            <li>Product</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
