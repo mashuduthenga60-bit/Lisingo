@@ -151,7 +151,7 @@ INSERT INTO roles (role_name, description, can_manage_users, can_manage_products
 
 -- Insert default admin user (password: Admin@123)
 INSERT INTO users (username, email, password, first_name, last_name, role_id, status) VALUES
-('admin', 'admin@lisingo.co.za', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'System', 'Administrator', 1, 'active');
+('admin', 'admin@lisingo.co.za', '$2y$10$qofNEIJrIGwcO8Z9tvshfu5B2NVfDveyJeIX2kjmppOsqZvsB3HmO', 'System', 'Administrator', 1, 'active');
 
 -- Insert default categories
 INSERT INTO categories (name, description) VALUES

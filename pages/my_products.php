@@ -8,9 +8,9 @@ if (!isLoggedIn()) {
 
 $conn = getDBConnection();
 
-// Handle delete
-if (isset($_GET['delete'])) {
-    $del_id = (int)$_GET['delete'];
+// Handle delete (POST only to prevent CSRF via GET)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
+    $del_id = (int)$_POST['delete'];
     $stmt = $conn->prepare("UPDATE products SET status = 'removed' WHERE id = ? AND seller_id = ?");
     $stmt->bind_param("ii", $del_id, $_SESSION['user_id']);
     $stmt->execute();
@@ -64,7 +64,10 @@ $products = $stmt->get_result();
                     <td><small><?php echo date('d M Y', strtotime($p['created_at'])); ?></small></td>
                     <td>
                         <a href="<?php echo SITE_URL; ?>/pages/edit_product.php?id=<?php echo $p['id']; ?>" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></a>
-                        <a href="<?php echo SITE_URL; ?>/pages/my_products.php?delete=<?php echo $p['id']; ?>" class="btn btn-sm btn-outline-danger btn-delete-confirm"><i class="bi bi-trash"></i></a>
+                        <form method="POST" action="<?php echo SITE_URL; ?>/pages/my_products.php" class="d-inline">
+                            <input type="hidden" name="delete" value="<?php echo $p['id']; ?>">
+                            <button type="submit" class="btn btn-sm btn-outline-danger btn-delete-confirm"><i class="bi bi-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 <?php endwhile; ?>

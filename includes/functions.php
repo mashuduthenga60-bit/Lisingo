@@ -1,12 +1,9 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 
-// Sanitize input
+// Sanitize input (trim only - output escaping handled at display layer, SQL injection prevented by prepared statements)
 function sanitize($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+    return trim($data);
 }
 
 // Check if user is logged in
@@ -78,8 +75,8 @@ function displayFlashMessage() {
         $message = $_SESSION['flash_message'];
         $type = $_SESSION['flash_type'] ?? 'success';
         unset($_SESSION['flash_message'], $_SESSION['flash_type']);
-        return '<div class="alert alert-' . $type . ' alert-dismissible fade show" role="alert">
-                    ' . $message . '
+        return '<div class="alert alert-' . htmlspecialchars($type) . ' alert-dismissible fade show" role="alert">
+                    ' . htmlspecialchars($message) . '
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>';
     }

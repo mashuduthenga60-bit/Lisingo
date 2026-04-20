@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = sanitize($_POST['status'] ?? 'active');
 
     $stmt = $conn->prepare("UPDATE users SET first_name=?, last_name=?, email=?, phone=?, city=?, province=?, role_id=?, status=? WHERE id=?");
-    $stmt->bind_param("ssssssiis", $first_name, $last_name, $email, $phone, $city, $province, $role_id, $status, $id);
+    $stmt->bind_param("ssssssisi", $first_name, $last_name, $email, $phone, $city, $province, $role_id, $status, $id);
 
     if ($stmt->execute()) {
         // Update password if provided
